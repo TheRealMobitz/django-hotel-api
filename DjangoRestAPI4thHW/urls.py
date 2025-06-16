@@ -16,15 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import JsonResponse
 from hotel.views import RoomDetailView
-
-def health_check(request):
-    return JsonResponse({"status": "ok", "message": "Django Hotel API is running"})
+from api_utils import health_check, test_endpoint
 
 urlpatterns = [
-    path('', health_check, name='health-check'),
     path('admin/', admin.site.urls),
+    path('api/health/', health_check, name='health-check'),
+    path('api/test/', test_endpoint, name='test-endpoint'),
     path('api/user/', include('user.urls')),
     path('api/hotel/', include('hotel.urls')),
     path('api/reservation/', include('reservation.urls')),

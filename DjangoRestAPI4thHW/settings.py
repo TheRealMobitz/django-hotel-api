@@ -84,11 +84,11 @@ WSGI_APPLICATION = 'DjangoRestAPI4thHW.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# Simple database configuration for Vercel
+# Simple database configuration for Vercel (in-memory SQLite)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/tmp/db.sqlite3' if os.environ.get('VERCEL') else BASE_DIR / 'db.sqlite3',
+        'NAME': ':memory:' if os.environ.get('VERCEL') else BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -158,3 +158,30 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = 'user.User'
+
+# Vercel-specific settings
+if os.environ.get('VERCEL'):
+    # Simplify logging for Vercel
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+            },
+        },
+        'root': {
+            'handlers': ['console'],
+        },
+    }
+    
+    # Disable migrations check for faster startup
+    MIGRATION_MODULES = {
+        'user': None,
+        'hotel': None,
+        'reservation': None,
+        'admin': None,
+        'auth': None,
+        'contenttypes': None,
+        'sessions': None,
+    }
