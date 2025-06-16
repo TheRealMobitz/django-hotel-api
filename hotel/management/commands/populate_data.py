@@ -36,9 +36,33 @@ class Command(BaseCommand):
 
         # Create hotels
         hotels_data = [
-            {'name': 'Grand Hotel', 'location': 'Tehran', 'description': 'Luxury hotel in downtown Tehran'},
-            {'name': 'Royal Resort', 'location': 'Isfahan', 'description': 'Beautiful resort with historical views'},
-            {'name': 'Beach Paradise', 'location': 'Kish', 'description': 'Beachfront hotel with amazing sea views'},
+            {
+                'name': 'Grand Hotel', 
+                'city': 'Tehran', 
+                'country': 'Iran',
+                'address': '123 Main Street, Tehran',
+                'phone_number': '+98-21-123-4567',
+                'email': 'info@grandhotel.com',
+                'description': 'Luxury hotel in downtown Tehran'
+            },
+            {
+                'name': 'Royal Resort', 
+                'city': 'Isfahan', 
+                'country': 'Iran',
+                'address': '456 Royal Ave, Isfahan',
+                'phone_number': '+98-31-987-6543',
+                'email': 'contact@royalresort.com',
+                'description': 'Beautiful resort with historical views'
+            },
+            {
+                'name': 'Beach Paradise', 
+                'city': 'Kish', 
+                'country': 'Iran',
+                'address': '789 Beach Road, Kish Island',
+                'phone_number': '+98-76-555-0123',
+                'email': 'hello@beachparadise.com',
+                'description': 'Beachfront hotel with amazing sea views'
+            },
         ]
 
         for hotel_data in hotels_data:
@@ -47,13 +71,14 @@ class Command(BaseCommand):
                 self.stdout.write(f'Created hotel: {hotel.name}')
 
                 # Create rooms for each hotel
-                room_types = ['Single', 'Double', 'Suite', 'Deluxe']
+                room_types = ['single', 'double', 'suite', 'deluxe']
                 for i in range(10):
                     room = Room.objects.create(
                         hotel=hotel,
                         room_number=f'{100 + i}',
                         room_type=random.choice(room_types),
                         price_per_night=random.randint(50, 300),
+                        capacity=random.randint(1, 4),
                         is_available=random.choice([True, False])
                     )
                     self.stdout.write(f'Created room: {room.room_number} in {hotel.name}')
