@@ -32,35 +32,12 @@ class Command(BaseCommand):
             }
         )
 
-        hotel3, created = Hotel.objects.get_or_create(
-            name="Caspian Sea Resort",
-            defaults={
-                'description': "Beautiful beachfront resort on the Caspian Sea",
-                'address': "Ramsar Beach, Mazandaran, Iran",
-                'city': "Ramsar",
-                'country': "Iran",
-                'phone_number': "+98-11-22334455",
-                'email': "info@caspian-resort.com",
-                'rating': 4.3
-            }
-        )
-
-        # Create sample rooms for each hotel
+        # Create sample rooms
         rooms_data = [
-            # Grand Hotel Tehran rooms
             {'hotel': hotel1, 'room_number': '101', 'room_type': 'single', 'price': 2500000, 'capacity': 1, 'desc': 'Elegant single room with city view'},
             {'hotel': hotel1, 'room_number': '201', 'room_type': 'double', 'price': 3500000, 'capacity': 2, 'desc': 'Spacious double room with mountain view'},
-            {'hotel': hotel1, 'room_number': '301', 'room_type': 'suite', 'price': 6000000, 'capacity': 4, 'desc': 'Luxury suite with panoramic city view'},
-            
-            # Isfahan Heritage Hotel rooms
             {'hotel': hotel2, 'room_number': '102', 'room_type': 'single', 'price': 2000000, 'capacity': 1, 'desc': 'Traditional Persian decorated single room'},
             {'hotel': hotel2, 'room_number': '202', 'room_type': 'double', 'price': 3000000, 'capacity': 2, 'desc': 'Double room with traditional Iranian carpet'},
-            {'hotel': hotel2, 'room_number': '302', 'room_type': 'deluxe', 'price': 4500000, 'capacity': 3, 'desc': 'Deluxe room with historic square view'},
-            
-            # Caspian Sea Resort rooms
-            {'hotel': hotel3, 'room_number': '103', 'room_type': 'single', 'price': 1800000, 'capacity': 1, 'desc': 'Cozy single room with sea breeze'},
-            {'hotel': hotel3, 'room_number': '203', 'room_type': 'double', 'price': 2800000, 'capacity': 2, 'desc': 'Double room with direct sea view'},
-            {'hotel': hotel3, 'room_number': '303', 'room_type': 'suite', 'price': 5000000, 'capacity': 4, 'desc': 'Sea-facing suite with private balcony'},
         ]
 
         for room_data in rooms_data:
