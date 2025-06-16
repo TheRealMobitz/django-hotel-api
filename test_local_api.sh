@@ -13,26 +13,29 @@ curl -X GET "${BASE_URL}/api/hotel/" -H "Content-Type: application/json"
 echo ""
 echo ""
 echo "2. Testing user registration..."
-curl -X POST "${BASE_URL}/api/user/register/" \
+curl -X POST "${BASE_URL}/api/auth/signup/" \
     -H "Content-Type: application/json" \
     -d '{
         "username": "testuser",
         "email": "test@example.com",
         "password": "testpass123",
-        "password2": "testpass123",
-        "first_name": "Test",
-        "last_name": "User"
+        "password_confirm": "testpass123"
     }'
 
 echo ""
 echo ""
 echo "3. Testing user login..."
-curl -X POST "${BASE_URL}/api/user/login/" \
+curl -X POST "${BASE_URL}/api/auth/login/" \
     -H "Content-Type: application/json" \
     -d '{
         "email": "test@example.com",
         "password": "testpass123"
     }'
+
+echo ""
+echo ""
+echo "4. Testing reservation endpoint (should require auth)..."
+curl -X GET "${BASE_URL}/api/reservation/" -H "Content-Type: application/json"
 
 echo ""
 echo ""
