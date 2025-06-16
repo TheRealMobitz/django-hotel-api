@@ -3,7 +3,8 @@
   "builds": [
     {
       "src": "DjangoRestAPI4thHW/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb" }
     }
   ],
   "routes": [
@@ -11,5 +12,8 @@
       "src": "/(.*)",
       "dest": "DjangoRestAPI4thHW/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "VERCEL": "1"
+  }
 }

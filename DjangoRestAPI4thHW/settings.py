@@ -174,14 +174,3 @@ if os.environ.get('VERCEL'):
             'handlers': ['console'],
         },
     }
-    
-    # Disable migrations check for faster startup
-    MIGRATION_MODULES = {
-        'user': None,
-        'hotel': None,
-        'reservation': None,
-        'admin': None,
-        'auth': None,
-        'contenttypes': None,
-        'sessions': None,
-    }
