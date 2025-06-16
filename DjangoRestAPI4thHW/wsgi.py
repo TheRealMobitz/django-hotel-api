@@ -14,5 +14,6 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DjangoRestAPI4thHW.settings')
 
 application = get_wsgi_application()
 
-# Vercel requires the callable to be named 'app'
+# Vercel requires the callable to be named 'app' or 'handler'
 app = application
+handler = application
