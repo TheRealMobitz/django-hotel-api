@@ -2,13 +2,13 @@
 
 # Build script for Vercel
 echo "Installing dependencies..."
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 echo "Running migrations..."
-python manage.py migrate --noinput
+python3 manage.py migrate --noinput
 
 echo "Collecting static files..."
-python manage.py collectstatic --noinput --clear
+python3 manage.py collectstatic --noinput --clear
 
 echo "Creating sample data..."
-python manage.py populate_data
+python3 manage.py populate_data

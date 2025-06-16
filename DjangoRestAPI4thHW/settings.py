@@ -86,10 +86,11 @@ WSGI_APPLICATION = 'DjangoRestAPI4thHW.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# For Vercel deployment, use SQLite in memory
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': ':memory:',
     }
 }
 
@@ -97,14 +98,6 @@ DATABASES = {
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
-else:
-    # For Vercel, use SQLite in memory
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': ':memory:',
-        }
-    }
 
 
 # Password validation
