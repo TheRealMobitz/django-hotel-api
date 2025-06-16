@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'DjangoRestAPI4thHW.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:' if os.environ.get('VERCEL') else BASE_DIR / 'db.sqlite3',
+        'NAME': ':memory:',
     }
 }
 
